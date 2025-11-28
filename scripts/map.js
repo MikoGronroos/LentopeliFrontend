@@ -6,7 +6,9 @@ var map = L.map('map', {
     boxZoom: false,
     zoomControl: false,
     doubleClickZoom: false,
-    zoomDelta: 0
+    zoomDelta: 0,
+    scrollWheelZoom: false,
+    touchZoom: false
 
 });
 
