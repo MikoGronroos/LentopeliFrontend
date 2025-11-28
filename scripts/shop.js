@@ -8,4 +8,11 @@ const storeItems = [
     {id: 7, name: "Postcard from South America", price: 200, type: "postcard"},
 ];
 
+let player = {
+    coins: 200,
+    inventory: []
+};
+
+
+
 
