@@ -1,0 +1,10 @@
+server = 1 2 2 1 4
+
+client json {"vaihdettava": {",1,2,4"}}
+
+endpoint(/StartGame)
+StartGame(moneyToGamble) server = 1 2 2 1 4
+
+endpoint(/ChangeCards)
+ChangeCards([1,2,4])  server = 1 1 3 1 1 status: error
+

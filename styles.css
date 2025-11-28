@@ -11,4 +11,12 @@
 
 #map {
   flex: 1;
+  position: relative;
+}
+
+#my-html{
+
+  width: 15%;
+  height: 20%;
+  background-color: blue;
 }
