@@ -1,6 +1,14 @@
-#map{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80%;
+#wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: row-reverse;
+}
+
+#sidebar {
+  width: 20%;
+  background: #ddd;
+}
+
+#map {
+  flex: 1;
 }
