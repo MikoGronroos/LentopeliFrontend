@@ -1,14 +1,16 @@
 var map = L.map('map', {
-    center: [42, 11],
-    zoom: 2.57,
-    zoomSnap: 0,
-    dragging: false,
-    boxZoom: false,
-    zoomControl: false,
-    doubleClickZoom: false,
-    zoomDelta: 0,
-    scrollWheelZoom: false,
-    touchZoom: false
+  center: [42, 11],
+  zoom: 2.57,
+  zoomSnap: 0,
+  dragging: false,
+  boxZoom: false,
+  zoomControl: false,
+  doubleClickZoom: false,
+  zoomDelta: 0,
+  scrollWheelZoom: false,
+  touchZoom: false,
+  trackResize: false,
+  keyboard: false
 
 });
 
