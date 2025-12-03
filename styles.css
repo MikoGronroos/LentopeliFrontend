@@ -14,9 +14,24 @@
   position: relative;
 }
 
-#my-html{
-
+#cityTag{
+  display: flex;
+  flex-direction: column;
   width: 15%;
-  height: 20%;
+  height: 10%;
   background-color: blue;
+}
+
+#cityName{
+  width: 100%;
+  flex: 1;
+  font-size: 10px;
+  white-space: nowrap;     
+  overflow: hidden;        
+  text-overflow: ellipsis; 
+}
+
+#cityPrice{
+  width: 100%;
+  flex: 1;
 }

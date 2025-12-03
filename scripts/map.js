@@ -28,10 +28,34 @@ async function getAirports(){
     console.log(error.message);
   }
 }
-
+let decidedAirports;
 getAirports().then(
-  function(value) {showAirports(value);}
+  function(value) {
+    decidedAirports = value;
+    showAirports(value);
+  }
 );
+
+function createCard(title, text, point) {
+  const el = document.createElement("div");
+  el.id = "cityTag";
+  el.style.position = "absolute";
+
+  el.style.left = point.x + "px";
+  el.style.top = point.y + "px";
+el.style.transform = "translate(-50%, -130%)";
+  el.style.zIndex = 9999;
+  const h3 = document.createElement("h3");
+  h3.textContent = title;
+  h3.id = "cityName";
+
+  const p = document.createElement("p");
+  p.textContent = text;
+  p.id = "cityPrice";
+
+  el.append(h3, p);
+  return el;
+}
 
 function showAirports(items) {
   for (var i = 0; i < items.length; i++) {
@@ -44,15 +68,14 @@ function showAirports(items) {
 
     let latlng = circle.getLatLng();
     let point = map.latLngToContainerPoint(latlng);
+    let value = i;
+    circle.on('click', function (e) {
+      console.log(decidedAirports[value][0]);
+    });
+
+    el = createCard(items[value][0], "100 coins", point);
+    document.getElementById("map").appendChild(el);
   }
-/*
-  const el = document.createElement("div");
-  el.id = "my-html";
-  el.style.position = "absolute";
-  el.style.left = point.x + "px";
-  el.style.top = point.y + "px";
-  el.style.zIndex = 9999;
-  document.getElementById("map").appendChild(el);*/
 }
 
 
