@@ -60,6 +60,8 @@ el.style.transform = "translate(-50%, -130%)";
   return el;
 }
 
+let currentCard = null;
+
 function showAirports(items) {
   for (var i = 0; i < items.length; i++) {
     var circle = L.circle([items[i][1], items[i][2]], {
@@ -73,11 +75,12 @@ function showAirports(items) {
     let point = map.latLngToContainerPoint(latlng);
     let value = i;
     circle.on('click', function (e) {
-      console.log(decidedAirports[value][0]);
+      if(currentCard != null){
+        currentCard.remove();
+      }     
+      currentCard = createCard(items[value][0], "100 coins", point);
+      document.getElementById("map").appendChild(currentCard);
     });
-
-    el = createCard(items[value][0], "100 coins", point);
-    document.getElementById("map").appendChild(el);
   }
 }
 
