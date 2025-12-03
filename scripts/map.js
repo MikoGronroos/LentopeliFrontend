@@ -53,7 +53,10 @@ el.style.transform = "translate(-50%, -130%)";
   p.textContent = text;
   p.id = "cityPrice";
 
-  el.append(h3, p);
+  const button = document.createElement("button");
+  button.id = "cityTravelButton";
+
+  el.append(h3, p, button);
   return el;
 }
 
