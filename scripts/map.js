@@ -55,6 +55,24 @@ el.style.transform = "translate(-50%, -130%)";
 
   const button = document.createElement("button");
   button.id = "cityTravelButton";
+  button.onclick = async function(){
+    const obj = {name: "John", age: 30, city: "New York"};
+    const data = {
+        body: JSON.stringify(obj),
+        method: 'POST',
+        headers: {
+              'Content-type': 'application/json',
+        }
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:3000/move', data); 
+      const json = await response.json();          
+      console.log('result', json);      
+    } catch (e) {
+      console.log('error', e);
+    } 
+  };
 
   el.append(h3, p, button);
   return el;
