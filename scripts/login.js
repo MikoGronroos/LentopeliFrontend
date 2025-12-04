@@ -20,7 +20,7 @@ document.getElementById("loginbutton").onclick = async () => {
   };
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/login", data);
+    const response = await fetch("http://127.0.0.1:3000/login", data);
     const json = await response.json();
     document.getElementById("message").textContent = json.message;
   if (json.success) {
@@ -53,7 +53,7 @@ document.getElementById("registerbutton").onclick = async () => {
   };
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/register", data);
+    const response = await fetch("http://127.0.0.1:3000/register", data);
     const json = await response.json();
     document.getElementById("message").textContent = json.message;
       if (json.success) {
