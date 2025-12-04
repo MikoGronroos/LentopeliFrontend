@@ -58,6 +58,7 @@ function createCard(title, text, point, callback) {
   button.onclick = async function(){
     callback(); 
   };
+  button.innerHTML = "Fly here!";
 
   el.append(h3, p, button);
   return el;
