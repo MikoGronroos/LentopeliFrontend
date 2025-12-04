@@ -1,0 +1,54 @@
+html {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background-color: #F1F2EB;
+
+}
+
+.container {
+    background-color: darkgoldenrod;
+}
+
+
+
+header {
+text-align: center;
+}
+
+figure {
+    padding:15rem 0 0 0;
+
+}
+
+figure p {
+    text-align: center;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+figure article {
+    padding: 12rem 0 0 0;
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    text-align: center;
+    width: 20%;
+    display: flex;
+    padding: 1rem;
+}
+
+#shoot {
+    margin: 0 3rem 0 0;
+    background-color: grey;
+}
+
+#stand {
+    margin: 0 0 0 3rem;
+    background-color: saddlebrown;
+}

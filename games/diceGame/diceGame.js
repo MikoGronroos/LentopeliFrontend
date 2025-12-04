@@ -46,10 +46,10 @@ getNumbers();
 async function sendData(guess,diceSum,guessTracker,revealedDice) {
   const data = {
     body: JSON.stringify({
-      guess: `${guess}`,
-      diceSum: `${diceSum}`,
-      guessTracker: `${guessTracker}`,
-      revealedDice: `${revealedDice}`
+      guess: guess,
+      diceSum: diceSum,
+      guessTracker: guessTracker,
+      revealedDice: revealedDice
 
     }),
     method: 'POST',
