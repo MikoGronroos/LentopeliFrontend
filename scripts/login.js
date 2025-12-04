@@ -23,6 +23,9 @@ document.getElementById("loginbutton").onclick = async () => {
     const response = await fetch("http://127.0.0.1:5000/login", data);
     const json = await response.json();
     document.getElementById("message").textContent = json.message;
+  if (json.success) {
+    window.location.href = "index.html"
+  }
   } catch (e) {
     document.getElementById("message").textContent = "Could not connect to the server";
   }
@@ -53,6 +56,9 @@ document.getElementById("registerbutton").onclick = async () => {
     const response = await fetch("http://127.0.0.1:5000/register", data);
     const json = await response.json();
     document.getElementById("message").textContent = json.message;
+      if (json.success) {
+    window.location.href = "index.html"
+  }
   } catch (e) {
     document.getElementById("message").textContent = "Could not connect to the server";
   }
