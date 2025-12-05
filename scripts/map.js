@@ -84,7 +84,7 @@ function showAirports(items) {
       }     
       currentCard = createCard(items[value][0], "100 coins", point, async function(){
         
-        const obj = {airportIndex: value};
+        const obj = {icao: items[value][4]};
         const data = {
             body: JSON.stringify(obj),
             method: 'POST',
