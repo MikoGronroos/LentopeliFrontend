@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-        <h2>Login</h2>
-        <input id = "username" type = "text" placeholder = "Username">
-        <input id = "password" type = "password" placeholder = "Password">
-        <button id = "loginbutton">Login</button>
-        <button id = "registerbutton">Register</button>
+
+<body class="login-page">
+    <div class="login-container">
+        <input id="username" type="text" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <div class="button-row">
+            <button id="loginbutton">Login</button>
+            <button id="registerbutton">Register</button>
+        </div>
         <p id="message"></p>
+    </div>
 
 <script src="scripts/login.js"></script>
 

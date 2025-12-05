@@ -41,3 +41,44 @@
   width: 80%;
   flex: 1;
 }
+
+body.login-page {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: url('media/ttgbg.jpg') no-repeat center center;
+    background-size: contain;
+}
+
+.login-container {
+    width: 200px;
+    margin: auto;
+    margin-top: 600px;
+}
+
+.login-container input {
+    display: block;
+    background-color: #5C3A21;
+    color: #FFFFFF;
+    width: 100%;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+}
+
+.button-row button {
+    background-color: #228B22;
+    color: white;
+}
+
+#message {
+    color: red;
+    text-align: center;
+    background: white;
+}
+
+#message:empty {
+    background: none;
+}
