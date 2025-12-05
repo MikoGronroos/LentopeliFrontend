@@ -50,12 +50,18 @@
     justify-content: center;
     align-items: center;
 }
-html, body{min-height:100%;}
+html, body{
+    min-height:100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
 
-body {
+body.loginbody {
     background-image: url('media/ttgbg.jpg');
-    background-size: cover;
-    height: 100vh;
+}
+
+body.storybody{
+    background-image: url('media/mikostory.jpg');
 }
 
 .login-container {
@@ -88,3 +94,5 @@ body {
 #message:empty {
     background: none;
 }
+
+
