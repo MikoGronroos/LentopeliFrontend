@@ -42,18 +42,24 @@
   flex: 1;
 }
 
-body.login-page {
-    margin: 0;
-    height: 100vh;
+.login-page {
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-    background: url('media/ttgbg.jpg') no-repeat center center;
-    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+html, body{min-height:100%;}
+
+body {
+    background-image: url('media/ttgbg.jpg');
+    background-size: cover;
+    height: 100vh;
 }
 
 .login-container {
     width: 200px;
-    margin: auto;
-    margin-top: 600px;
 }
 
 .login-container input {
@@ -74,9 +80,9 @@ body.login-page {
 }
 
 #message {
-    color: red;
+    color: white;
     text-align: center;
-    background: white;
+    background: #228B22;
 }
 
 #message:empty {
