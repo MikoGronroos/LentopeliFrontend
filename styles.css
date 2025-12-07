@@ -130,8 +130,20 @@ body.storybody{
 }
 
 .postcard-box {
-  background: #bbb;
-  height: 50px;
+  width: 100%;
+  height: 58px;
+  overflow: hidden;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postcard-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .money-box {
