@@ -163,3 +163,10 @@ body.storybody{
   max-width: 400px;
   margin: -7% auto 0 auto;
 }
+
+.nav-button {
+  background: #eee;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
