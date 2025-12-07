@@ -1,12 +1,15 @@
 #wrapper {
   display: flex;
   height: 100vh;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 #sidebar {
   width: 20%;
   background: #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 #map {
@@ -60,9 +63,6 @@ body.loginbody {
     background-image: url('media/ttgbg.jpg');
 }
 
-body.storybody{
-    background-image: url('media/mikostory.jpg');
-}
 
 .login-container {
     width: 200px;
@@ -95,4 +95,59 @@ body.storybody{
     background: none;
 }
 
+body.storybody{
+    background-image: url('media/mikostory.jpg');
+}
 
+.airplane-box {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.airplane-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.luckywheel-box {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.luckywheel-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postcard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.postcard-box {
+  background: #bbb;
+  height: 50px;
+}
+
+.money-box {
+  background: #eee;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  max-width: 400px;
+  margin: -7% auto 0 auto;
+}
