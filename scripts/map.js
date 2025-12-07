@@ -64,11 +64,26 @@ getAirports().then(
   }
 );
 
-function showAirports(items) {
+async function showAirports(items) {
   for (var i = 0; i < items.length; i++) {
-    console.log(items[i]);
+  console.log(items[i]);
+  let currentAirport;
+  try {
+    const response = await fetch('http://127.0.0.1:3000/getIsCurrentAirport'); 
+    const values = await response.json(); 
+    currentAirport = values["airport"][0];
+  } catch (e) {
+    console.log('error', e);
+  }    
+    let circleColor = 'red';
+    console.log(items[i][1]);
+    console.log(currentAirport[0]);
+    console.log("---------");
+    if(items[i][1] === currentAirport[0]){
+      circleColor = 'green';
+    }    
     var circle = L.circle([items[i][4], items[i][5]], {
-      color: 'red',
+      color: circleColor,
       fillColor: '#f03',
       fillOpacity: 0.5,
       radius: 275000
@@ -77,10 +92,21 @@ function showAirports(items) {
     let latlng = circle.getLatLng();
     let point = map.latLngToContainerPoint(latlng);
     let value = i;
-    circle.on('click', function (e) {
+    circle.on('click', async function (e) {
       if(currentCard != null){
         currentCard.remove();
-      }     
+      }
+      let playerAirport;
+      try {
+        const response = await fetch('http://127.0.0.1:3000/getIsCurrentAirport'); 
+        const values = await response.json(); 
+        playerAirport = values["airport"][0];
+      } catch (e) {
+        console.log('error', e);
+      }    
+      if(items[value][1] === playerAirport[0]){
+        return;
+      }
       currentCard = createCard(items[value][3], "100 coins", point, async function(){
         
         const obj = {icao: items[value][1]};
