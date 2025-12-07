@@ -1,0 +1,58 @@
+html {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url('../images/bgimg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header {
+text-align: center;
+}
+
+figure {
+    padding:15rem 0 0 0;
+
+}
+
+figure p {
+    text-align: center;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+figure article {
+    padding: 12rem 0 0 0;
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    text-align: center;
+    width: 20%;
+    display: flex;
+    padding: 1rem;
+    background-color: #228B22;
+    color: white;
+}
+
+button:hover {
+    background-color: #155715;
+}
+
+#continue {
+    margin: 0 3rem 0 0;
+}
+
+#exit {
+    margin: 0 0 0 3rem;
+
+}

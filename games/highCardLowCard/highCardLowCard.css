@@ -1,0 +1,88 @@
+html {
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    background-color: #F1F2EB;
+    height: 100%;
+}
+
+body{
+    background-image: url("../images/gamblebg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+header {
+text-align: center;
+}
+
+
+
+figure {
+    padding:10rem 0 0 0;
+
+}
+
+#results {
+    text-align: center;
+    padding: 0 0 2rem 0;
+    margin: 0 0 0 0;
+}
+
+#card {
+    padding: 5rem 2rem 5rem 2rem;
+    background-color: whitesmoke;
+    width: 5%;
+    margin: auto;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 8px;
+}
+
+#buttonarticle {
+    padding: 1rem 0 0 0;
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button {
+    text-align: center;
+    width: 20%;
+    display: flex;
+    padding: 1rem;
+    color: white;
+}
+
+#higher {
+    margin: 0 3rem 0 0;
+        background-color: #228B22;
+}
+#higher:hover{
+    background-color: #155715;
+}
+#same {
+    margin: 3rem;
+    background-color: cadetblue;
+}
+#same:hover{
+    background-color: #447173;
+}
+
+#lower {
+    margin: 0 0 0 3rem;
+    background-color: #CF0000;
+}
+
+#lower:hover{
+    background-color: #A60000;
+}
