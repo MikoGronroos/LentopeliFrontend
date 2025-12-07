@@ -58,12 +58,15 @@ async function getAirports(){
     console.log('error', e);
   }}
 
-getAirports().then(
-  function(value){
-    showAirports(value);
-  }
-);
 let airportCircles = [];
+
+getAirports().then(function(value) {
+  showAirports(value).then(function() {
+    getCards().then(async function(values) {
+      createPostcards(values);
+    });
+  });
+});
 async function showAirports(items) {
   for (var i = airportCircles.length - 1; i >= 0; i--){
 
@@ -138,4 +141,51 @@ async function showAirports(items) {
   }
 }
 
+async function getCards(){
 
+try {
+    const response = await fetch('http://127.0.0.1:3000/getAllPostcards');
+    const values = await response.json(); 
+    return values["cards"]; 
+  } catch (e) {
+    console.log('error', e);
+  }
+
+}
+
+async function createPostcards(values){
+
+for(let i = 0; i < values.length; i++){
+        let json;
+        const obj = {postcard: values[i]};
+        const data = {
+            body: JSON.stringify(obj),
+            method: 'POST',
+            headers: {
+                  'Content-type': 'application/json',
+            }
+        }
+
+        try {
+          const response = await fetch('http://127.0.0.1:3000/hasPostcard', data); 
+          
+          json = await response.json();   
+        } catch (e) {
+          console.log('error', e);
+        }
+  
+      const card = document.createElement("div");
+    card.classList.add("postcard-box");
+
+      const image =document.createElement("img");
+    path = values[i][3];
+    image.src = path;
+      if(json['has'] === 'false'){
+        image.classList.add('blackAndWhitePicture');
+    }
+
+      card.append(image);
+
+      document.getElementById("postcard-grid").appendChild(card);
+  }  
+}

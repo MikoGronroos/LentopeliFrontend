@@ -170,3 +170,6 @@ body.storybody{
   text-align: center;
   line-height: 50px;
 }
+.blackAndWhitePicture{
+  filter: grayscale(100%);
+}
