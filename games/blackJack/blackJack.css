@@ -2,21 +2,28 @@ html {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
     background-color: #F1F2EB;
-
+    height: 100%;
 }
 
-.container {
-    background-color: darkgoldenrod;
+body {
+    background-image: url("../images/gamblebg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    margin: 0;
 }
 
-
+h1 {
+    margin-top: 0;
+}
 
 header {
 text-align: center;
 }
 
 figure {
-    padding:15rem 0 0 0;
+    padding:0 0 0 0;
 
 }
 
@@ -27,7 +34,7 @@ figure p {
 }
 
 figure article {
-    padding: 12rem 0 0 0;
+    padding: 3rem 0 0 0;
     display: flex;
     width: 50%;
     margin: auto;
@@ -41,14 +48,37 @@ button {
     width: 20%;
     display: flex;
     padding: 1rem;
+    background-color: #228B22;
+    color: white;
+}
+
+button:hover{
+    background-color: #155715;
+}
+
+
+#buttonarticle {
+    padding: 8rem 0 0 0;
 }
 
 #hit {
     margin: 0 3rem 0 0;
-    background-color: blue;
 }
 
 #stand {
     margin: 0 0 0 3rem;
-    background-color: blueviolet;
+}
+
+.card {
+    padding: 5rem 2rem 5rem 2rem;
+    background-color: whitesmoke;
+    width: 5%;
+    margin: auto;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 8px;
+}
+
+section {
+    display: flex;
 }

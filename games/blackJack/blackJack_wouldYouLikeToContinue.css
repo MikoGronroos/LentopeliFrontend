@@ -1,15 +1,14 @@
 html {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
-    background-color: #F1F2EB;
-
 }
 
-.container {
-    background-color: darkgoldenrod;
+body {
+    background-image: url('../images/bgimg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
-
 
 header {
 text-align: center;
@@ -41,14 +40,19 @@ button {
     width: 20%;
     display: flex;
     padding: 1rem;
+    background-color: #228B22;
+    color: white;
+}
+
+button:hover {
+    background-color: #155715;
 }
 
 #continue {
     margin: 0 3rem 0 0;
-    background-color: darkslategray;
 }
 
 #exit {
     margin: 0 0 0 3rem;
-    background-color: rosybrown;
+
 }

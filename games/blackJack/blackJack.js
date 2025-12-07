@@ -13,7 +13,16 @@ let dealerValue = 0
 
 let moneyToGamble = 0
 let moneyWon = 1 //I put moneyWon as one because it causes errors sometimes when it's 0.
-                          // The code replaeces
+const cardshere = document.querySelector('#cardshere')
+const dealercardshere = document.querySelector('#dealercardshere')
+const dealercardtext1 = document.querySelector('#dealercardtext1')
+const cardtext1 = document.querySelector('#cardtext1')
+const cardtext2 = document.querySelector('#cardtext2')
+let howManyCards = 2
+let howManyDealerCards = 1
+let playercardlist = ''
+let dealerCardlist = ''
+
 
 //------------------------------------------------------------------------------
 //getCards zone
@@ -34,8 +43,13 @@ async function getCards() {
     moneyToGamble = jsonText.moneyToGamblejson
     moneyWon = jsonText.moneyWonjson
 
-    playerCardsHtml.innerHTML = `Your hand is ${playerCards}. The sum of your cards is ${playerValue}`
-    dealerCardsHtml.innerHTML = `The dealer's hand is ${dealerCards[0]}`
+    playerCardsHtml.innerHTML = `The sum of your cards is ${playerValue}.`
+
+    cardtext1.innerHTML = playerCards[0]
+    cardtext2.innerHTML =  playerCards[1]
+    dealercardtext1.innerHTML = dealerCards[0]
+
+
 
 
     return {playerCards, dealerCards, cards, state, playerValue, dealerValue};
@@ -50,8 +64,35 @@ async function getCards() {
 //Gets the game running when the page is loaded
 getCards();
 
+setTimeout(defineCards,500)
 
+function defineCards(){
+  playercardlist = `
+<article class="card">
 
+            <p>
+                ${playerCards[0]}
+            </p>
+
+        </article>
+                <article class="card">
+
+            <p>
+                ${playerCards[1]}
+            </p>
+
+        </article>
+`
+  dealerCardlist = `
+   <article class="card">
+
+            <p>
+                ${dealerCards[0]}
+            </p>
+                 </article>
+                 `
+  return {playercardlist, dealerCardlist}
+}
 
 //------------------------------------------------------------------------------
 //sendData zone
@@ -92,8 +133,21 @@ async function sendData(decision) {
       dealerValue = jsonText.dealerValuejson
       moneyToGamble = jsonText.moneyToGamblejson
       moneyWon = jsonText.moneyWonjson
+      howManyDealerCards = jsonText.howManyDealerCardsjson
 
-      dealerCardsHtml.innerHTML = `The dealers hand is: ${dealerCards}`
+
+      for (let i=1; i<=howManyDealerCards; i++) {
+        dealerCardlist += `
+   <article class="card">
+
+            <p>
+                ${dealerCards[i]}
+            </p>
+                 </article>
+                 `
+      }
+
+      dealercardshere.innerHTML = dealerCardlist
 
       setTimeout(() => winCheck(state,playerValue,dealerValue,moneyWon), 3000)
 
@@ -118,9 +172,20 @@ async function sendData(decision) {
       moneyToGamble = jsonText.moneyToGamblejson
       moneyWon = jsonText.moneyWonjson
 
-      playerCardsHtml.innerHTML = `Your new hand is ${playerCards}. The sum of your cards is ${playerValue}`
+      playerCardsHtml.innerHTML = `The sum of your new hand is ${playerValue}`
 
-      setTimeout(() => winCheck(state,playerValue,dealerValue),1000)
+      playercardlist += `<article class="card">
+
+            <p>
+            ${playerCards[howManyCards]}
+            </p>
+
+        </article>`
+
+      howManyCards += 1
+
+      cardshere.innerHTML = playercardlist
+      setTimeout(() => winCheck(state,playerValue,dealerValue,moneyWon),1500)
 
     }
     catch (error) {
@@ -134,11 +199,11 @@ function winCheck(state,playerValue,dealerValue,moneyWon){
 
 
   if (parseInt(state) === 3) {
-    alert(`You won! You got a blackjack! You won ${moneyWon}coins!`)
+    alert(`You won! You got a blackjack! You won ${moneyWon} coins!`)
     document.location='blackJack_wouldYouLikeToContinue.html'
   }
   else if (parseInt(state) === 1) {
-        alert(`You won! Your hand's value was ${playerValue} and the dealer's ${dealerValue}. You won ${moneyWon}coins!`)
+        alert(`You won! Your hand's value was ${playerValue} and the dealer's ${dealerValue}. You won ${moneyWon} coins!`)
         document.location='blackJack_wouldYouLikeToContinue.html'
      }
      else if (parseInt(state) === 2) {
@@ -158,7 +223,8 @@ stand.addEventListener('click', async () => {
   sendData(stand.value);
 }
 )
-hit.addEventListener('click', () => {
-  sendData(hit.value);
+hit.addEventListener('click', async() => {
+  sendData(hit.value)
+  ;
 }
 )

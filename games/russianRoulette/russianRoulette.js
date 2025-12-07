@@ -8,6 +8,8 @@ const stand = document.querySelector('#stand')
 let bullet = 0
 let winOrLost = ""
 let player = 0
+let moneyToGamble = 0
+let moneyWon = 1
 
 
 
@@ -17,12 +19,14 @@ async function getBullet() {
 
   try {
 
-
-    const response = await fetch('http://127.0.0.1:3000/games/russianRoulette/getbullet');
+    const money = localStorage.getItem("moneyToGamble")
+    const response = await fetch(`http://127.0.0.1:3000/games/russianRoulette/getbullet/${money}`);
     const jsonText = await response.json();
     console.log(jsonText);
     bullet = parseInt(jsonText.bulletjson);
     player = parseInt(jsonText.playerjson)
+    moneyToGamble = jsonText.moneyToGamblejson
+    moneyWon = jsonText.moneyWonjson
     results.innerHTML = `Your chance to die is 1/6.`
 
 
@@ -46,7 +50,9 @@ async function sendData(shootOrStand) {
     body: JSON.stringify({
       shootOrStand: shootOrStand,
       bullet: bullet,
-      player: player
+      player: player,
+      moneyWon: moneyWon,
+      moneyToGamble: moneyToGamble
 
 
     }),
@@ -63,10 +69,18 @@ async function sendData(shootOrStand) {
 
     winOrLost = jsonText.winOrLostjson;
     player = parseInt(jsonText.playerjson);
+    moneyWon = jsonText.moneyWonjson
 
     if (winOrLost === 'stand') {
-        alert("You decided to stand.")
+        if (player !== 2) {
+          alert(`You decided to stand. You won ${moneyWon} coins!`)
         document.location='russianRoulette_wouldYouLikeToContinue.html'
+        }
+        else {
+          alert(`You decided to stand. You won 0 coins.`)
+        document.location='russianRoulette_wouldYouLikeToContinue.html'
+        }
+
      }
      else if (winOrLost === 'lose') {
        alert("You lost!")

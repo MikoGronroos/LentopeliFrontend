@@ -1,7 +1,6 @@
 'use strict'
 
 //Some variables and queryselectors
-
 const results = document.querySelector('#results');
 const diceInput = document.querySelector('#dice_input')
 const sendButton = document.querySelector('#sendButton')
@@ -9,6 +8,9 @@ let guessTracker = 0
 let revealedDice = 0
 let diceSum = 0
 let highLow = ""
+let moneyToGamble = 0
+let moneyWon = 1 //I put moneyWon as one because it causes errors sometimes when it's 0. The code replaces it later
+
 
 
 
@@ -19,12 +21,14 @@ async function getNumbers() {
 
   try {
 
-
-    const response = await fetch('http://127.0.0.1:3000/games/dicegame/getnumbers')
+    const money = localStorage.getItem("moneyToGamble")
+    const response = await fetch(`http://127.0.0.1:3000/games/dicegame/getnumbers/${money}`)
     const jsonText = await response.json();
     console.log(jsonText);
     diceSum = jsonText.diceSumjson
     revealedDice = jsonText.revealedDicejson
+    moneyToGamble = jsonText.moneyToGamblejson
+    moneyWon = jsonText.moneyWonjson
     results.innerHTML = `Revealed dice is ${revealedDice}.`
 
 
@@ -49,7 +53,9 @@ async function sendData(guess,diceSum,guessTracker,revealedDice) {
       guess: guess,
       diceSum: diceSum,
       guessTracker: guessTracker,
-      revealedDice: revealedDice
+      revealedDice: revealedDice,
+      moneyWon: moneyWon,
+      moneyToGamble: moneyToGamble
 
     }),
     method: 'POST',
@@ -63,11 +69,12 @@ async function sendData(guess,diceSum,guessTracker,revealedDice) {
     const jsonText = await response.json();
     console.log('result', jsonText);
 
+    moneyWon = jsonText.moneyWonjson
     highLow = jsonText.highLowjson;
     guessTracker = parseInt(jsonText.guessTrackerjson);
 
     if (highLow === 'win') {
-        alert("You won!")
+        alert(`Correct! You won ${moneyWon} coins!`)
         document.location='diceGame_wouldYouLikeToContinue.html'
      }
      else if (highLow === 'lose') {
