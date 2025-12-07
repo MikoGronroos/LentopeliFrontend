@@ -19,23 +19,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-async function getAirports(){
-  try {
-    const response = await fetch('http://127.0.0.1:3000/getNewAirports');  
-    const airports = await response.json();         
-    return airports;
-  } catch (error) {
-    console.log(error.message);
-  }
-}
-let decidedAirports;
-getAirports().then(
-  function(value) {
-    decidedAirports = value;
-    showAirports(value);
-  }
-);
-
 function createCard(title, text, point, callback) {
   const el = document.createElement("div");
   el.id = "cityTag";
@@ -66,9 +49,25 @@ function createCard(title, text, point, callback) {
 
 let currentCard = null;
 
+async function getAirports(){
+  try {
+    const response = await fetch('http://127.0.0.1:3000/getAirports'); 
+    const values = await response.json(); 
+    return values["airports"]; 
+  } catch (e) {
+    console.log('error', e);
+  }}
+
+getAirports().then(
+  function(value){
+    showAirports(value);
+  }
+);
+
 function showAirports(items) {
   for (var i = 0; i < items.length; i++) {
-    var circle = L.circle([items[i][1], items[i][2]], {
+    console.log(items[i]);
+    var circle = L.circle([items[i][4], items[i][5]], {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5,
@@ -82,9 +81,9 @@ function showAirports(items) {
       if(currentCard != null){
         currentCard.remove();
       }     
-      currentCard = createCard(items[value][0], "100 coins", point, async function(){
+      currentCard = createCard(items[value][3], "100 coins", point, async function(){
         
-        const obj = {icao: items[value][4]};
+        const obj = {icao: items[value][1]};
         const data = {
             body: JSON.stringify(obj),
             method: 'POST',
