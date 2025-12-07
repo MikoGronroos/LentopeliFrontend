@@ -63,11 +63,15 @@ getAirports().then(
     showAirports(value);
   }
 );
-
+let airportCircles = [];
 async function showAirports(items) {
+  for (var i = airportCircles.length - 1; i >= 0; i--){
+
+     airportCircles[i].remove();
+
+  }
   for (var i = 0; i < items.length; i++) {
-  console.log(items[i]);
-  let currentAirport;
+    let currentAirport;
   try {
     const response = await fetch('http://127.0.0.1:3000/getIsCurrentAirport'); 
     const values = await response.json(); 
@@ -76,9 +80,7 @@ async function showAirports(items) {
     console.log('error', e);
   }    
     let circleColor = 'red';
-    console.log(items[i][1]);
-    console.log(currentAirport[0]);
-    console.log("---------");
+
     if(items[i][1] === currentAirport[0]){
       circleColor = 'green';
     }    
@@ -88,7 +90,7 @@ async function showAirports(items) {
       fillOpacity: 0.5,
       radius: 275000
     }).addTo(map);
-
+    airportCircles.push(circle);
     let latlng = circle.getLatLng();
     let point = map.latLngToContainerPoint(latlng);
     let value = i;
@@ -125,7 +127,11 @@ async function showAirports(items) {
         } catch (e) {
           console.log('error', e);
         }
-
+        getAirports().then(
+          function(value){
+            showAirports(value);
+          }
+        );
       });
       document.getElementById("map").appendChild(currentCard);
     });
