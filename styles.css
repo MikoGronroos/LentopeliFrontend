@@ -227,3 +227,18 @@ body.shop-page {
     color: black;
     pointer-events: none;
 }
+
+#loading-screen {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial;
+}
+
+#loading-box {
+    text-align: center;
+    font-size: 24px;
+}
