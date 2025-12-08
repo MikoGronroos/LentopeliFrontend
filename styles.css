@@ -199,18 +199,31 @@ body.shop-page {
     position: absolute;
     top: 270px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-48%);
     display: grid;
-    grid-template-columns: repeat(4, 110px);
-    gap: 20px;
+    grid-template-columns: repeat(4, 105px);
+    gap: 19px;
 }
 
 #shop-row-2 {
     position: absolute;
-    top: 385px;
+    top: 380px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-48%);
     display: grid;
-    grid-template-columns: repeat(4, 110px);
-    gap: 20px;
+    grid-template-columns: repeat(4, 105px);
+    gap: 19px;
+}
+
+#shop-message {
+    position: absolute;
+    top: 540px;
+    left: 50%;
+    transform: translateX(-45%);
+    width: 600px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    pointer-events: none;
 }
