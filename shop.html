@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Shop</title>
+    <script defer src="scripts/shop.js"></script>
+
+    <style>
+        body {
+            background-image: url("https://github.com/MikoGronroos/LentopeliFrontend/blob/main/media/shop.jpg?raw=true");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+
+        .shop-container {
+            width: 600px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 60px auto;
+        }
+
+        .item-box {
+            border: 2px solid #fff;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .item-box:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 5px black;
+            margin-top: 40px;
+        }
+    </style>
 </head>
+
 <body>
+
+<div class="shop-container" id="shop"></div>
+
+<script>
+
+    const shopDiv = document.getElementById("shop");
+
+    storeItems.forEach(item => {
+        const box = document.createElement("div");
+        box.className = "item-box";
+        box.innerHTML = `${item.name}<br>${item.price} coins`;
+        box.onclick = () => buyItem(item.id);
+        shopDiv.appendChild(box);
+    });
+</script>
 
 </body>
 </html>
+

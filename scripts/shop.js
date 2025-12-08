@@ -4,7 +4,7 @@ const storeItems = [
     {id: 3, name: "Postcard from Asia", price: 200, type: "postcard", continent: "Asia"},
     {id: 4, name: "Postcard from Australia", price: 200, type: "postcard", continent: "Australia"},
     {id: 5, name: "Postcard from Europe", price: 200, type: "postcard", continent: "Europe"},
-    {id: 6, name: "Postcard from North America", price: 200, type: "postcard", continent: "North Amrica"},
+    {id: 6, name: "Postcard from North America", price: 200, type: "postcard", continent: "North America"},
     {id: 7, name: "Postcard from South America", price: 200, type: "postcard", continent: "South America"},
 ];
 
@@ -29,7 +29,7 @@ async function buyItem(itemId) {
     };
 
     try {
-        const res = await fetch("http://localhost:5000/buy", {
+        const res = await fetch("http://localhost:3000/buy", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(body)
@@ -54,3 +54,23 @@ async function buyItem(itemId) {
         console.log("Error connecting to server:", err);
     }
 }
+
+// Insert shop items into HTML grid
+function loadShop() {
+    const shop = document.getElementById("shop");
+
+    storeItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "item-box";
+        div.innerHTML = `
+            <b>${item.name}</b><br>
+            ${item.price} coins
+        `;
+        div.onclick = () => buyItem(item.id);
+        shop.appendChild(div);
+    });
+}
+
+window.onload = loadShop;
+
+
