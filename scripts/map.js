@@ -83,7 +83,7 @@ async function showMoney(){
 }
 
 
-setInterval(showMoney, 1000);
+setInterval(showMoney, 3000);
 
 async function showAirports(items) {
   for (var i = airportCircles.length - 1; i >= 0; i--){
