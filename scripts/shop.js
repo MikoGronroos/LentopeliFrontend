@@ -62,7 +62,10 @@ function loadShop() {
     storeItems.forEach((item, index) => {
         const box = document.createElement("div");
         box.className = "item-box";
-        box.innerHTML = `${item.name}<br>${item.price} coins`;
+
+        const formattedName = item.name.replace("Postcard from ", "Postcard from<br>");
+
+        box.innerHTML = `${formattedName}<br>${item.price} coins`;
         box.onclick = () => buyItem(item.id);
 
         if (index < 4) {

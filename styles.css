@@ -183,35 +183,34 @@ body.shop-page {
     font-family: Arial, sans-serif;
 }
 
-
-body.shop-page {
-    background-image: url("https://raw.githubusercontent.com/MikoGronroos/LentopeliFrontend/main/media/shop.jpg");
-    background-repeat: no-repeat;
-    background-position: top center;
-
-    background-size: 1024px 683px;
-
-    background-color: #000;
-
-    font-family: Arial, sans-serif;
+.item-box {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+    color: black;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
 }
 
 #shop-row-1 {
     position: absolute;
-    top: 330px;
+    top: 270px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(4, 110px);
     gap: 20px;
 }
 
 #shop-row-2 {
     position: absolute;
-    top: 450px;
+    top: 385px;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(4, 110px);
     gap: 20px;
 }
