@@ -63,10 +63,28 @@ let airportCircles = [];
 getAirports().then(function(value) {
   showAirports(value).then(function() {
     getCards().then(async function(values) {
-      createPostcards(values);
+      createPostcards(values).then(showMoney());
     });
   });
 });
+
+async function showMoney(){
+  try {
+    const response = await fetch('http://127.0.0.1:3000/getMoney'); 
+    const values = await response.json();
+
+    
+      document.getElementById("money-box").innerHTML = "$" + values["money"];
+
+    
+  } catch (e) {
+    console.log('error', e);
+  }  
+}
+
+
+setInterval(showMoney, 1000);
+
 async function showAirports(items) {
   for (var i = airportCircles.length - 1; i >= 0; i--){
 
@@ -131,7 +149,7 @@ async function showAirports(items) {
           console.log('error', e);
         }
         getAirports().then(
-          function(value){
+          async function(value){
             showAirports(value);
           }
         );
