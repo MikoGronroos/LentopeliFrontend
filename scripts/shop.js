@@ -55,22 +55,22 @@ async function buyItem(itemId) {
     }
 }
 
-// Insert shop items into HTML grid
 function loadShop() {
-    const shop = document.getElementById("shop");
+    const row1 = document.getElementById("shop-row-1");
+    const row2 = document.getElementById("shop-row-2");
 
-    storeItems.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "item-box";
-        div.innerHTML = `
-            <b>${item.name}</b><br>
-            ${item.price} coins
-        `;
-        div.onclick = () => buyItem(item.id);
-        shop.appendChild(div);
+    storeItems.forEach((item, index) => {
+        const box = document.createElement("div");
+        box.className = "item-box";
+        box.innerHTML = `${item.name}<br>${item.price} coins`;
+        box.onclick = () => buyItem(item.id);
+
+        if (index < 4) {
+            row1.appendChild(box);
+        } else {
+            row2.appendChild(box);
+        }
     });
 }
 
 window.onload = loadShop;
-
-
