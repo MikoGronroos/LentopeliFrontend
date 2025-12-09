@@ -19,6 +19,37 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+async function addCorrectGame(value){
+  document.getElementById("link-container").href = value;
+}
+
+async function getLink(){
+
+  try {
+    const response = await fetch('http://127.0.0.1:3000/getCurrentContinent'); 
+    const values = await response.json();
+    let continent = values['status'];
+    let value;
+    if(continent === "AF"){
+      value = "games/blackJack/blackJack_gambleScreen.html";
+    }else if(continent === "AS"){
+      value = "games/russianRoulette/russianRoulette_gambleScreen.html"
+    }else if(continent === "EU"){
+      value = "games/pokerLite/pokerLite_gambleScreen.html"
+    }else if(continent === "NA"){
+      value = "games/roulette/roulette_gambleScreen.html"
+    }else if(continent === "SA"){
+      value = "games/diceGame/diceGame_gambleScreen.html"
+    }else if(continent === "AF"){
+      value = "games/highCardLowCard/highCardLowCard_gambleScreen.html"
+    }
+    return value;
+  } catch (e) {
+    console.log('error', e);
+  }
+  
+}
+
 function createCard(title, text, point, callback) {
   const el = document.createElement("div");
   el.id = "cityTag";
@@ -61,10 +92,13 @@ async function getAirports(){
 let airportCircles = [];
 
 getAirports().then(function(value) {
-  console.log(value);
   showAirports(value).then(function() {
     getCards().then(async function(values) {
-      createPostcards(values).then(showMoney());
+      createPostcards(values).then(showMoney().then(()=>{
+        getLink().then((link)=>{
+          addCorrectGame(link);
+        });
+      }));
     });
   });
 });
@@ -144,14 +178,19 @@ async function showAirports(items) {
 
         try {
           const response = await fetch('http://127.0.0.1:3000/move', data); 
-          const json = await response.json();          
+          const json = await response.json();     
+          let link = await getLink();
+          await addCorrectGame(link);
           console.log('result', json);      
         } catch (e) {
           console.log('error', e);
         }
+
         getAirports().then(
           async function(value){
-            showAirports(value);
+            showAirports(value).then(()=>{
+
+            });
           }
         );
       });
