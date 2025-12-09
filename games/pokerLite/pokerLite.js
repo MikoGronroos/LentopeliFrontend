@@ -26,14 +26,10 @@ let moneyWon = 1 //I put moneyWon as one because it causes errors sometimes when
 async function getCards() {
 
   try {
-
-    const money = localStorage.getItem("moneyToGamble")
-    const response = await fetch(`http://127.0.0.1:3000/games/pokerLite/getcards/${money}`);
+    const response = await fetch(`http://127.0.0.1:3000/games/pokerLite/getcards`);
     const jsonText = await response.json();
     console.log(jsonText);
     pList = jsonText.pListjson
-    moneyToGamble = jsonText.moneyToGamblejson
-    moneyWon = jsonText.moneyWonjson
     results.innerHTML = `Choose which cards to swap, and then press "continue".`
 
     cardtext1.innerHTML = pList[0]
@@ -63,9 +59,7 @@ async function sendData() {
   const data = {
     body: JSON.stringify({
       pList: pList,
-      reRollCheck: reRollCheck,
-      moneyWon: moneyWon,
-      moneyToGamble: moneyToGamble
+      reRollCheck: reRollCheck
     }),
     method: 'POST',
     headers: {
@@ -79,7 +73,6 @@ async function sendData() {
     console.log('result', jsonText);
 
     pList = jsonText.pListjson
-    moneyToGamble = jsonText.moneyToGamblejson
     moneyWon = jsonText.moneyWonjson
     const sumPList = jsonText.sumPListjson
     const sumCList = jsonText.sumCListjson
@@ -91,7 +84,7 @@ async function sendData() {
     cardtext4.innerHTML = pList[3]
     cardtext5.innerHTML = pList[4]
 
-    setTimeout(() => winCheck(sumPList,sumCList,winOrLose,moneyWon),3000)
+    winCheck(sumPList,sumCList,winOrLose,moneyWon)
 
   }
   catch (error) {
