@@ -29,11 +29,8 @@ let dealerCardlist = ''
 async function getCards() {
 
   try {
-
-    const money = localStorage.getItem("moneyToGamble")
-    const response = await fetch(`http://127.0.0.1:3000/games/blackJack/setup/${money}`);
+    const response = await fetch(`http://127.0.0.1:3000/games/blackJack/setup`);
     const jsonText = await response.json();
-    console.log(jsonText);
     playerCards = jsonText.playerCardsjson
     dealerCards = jsonText.dealerCardsjson
     cards = jsonText.cardsjson
@@ -62,10 +59,9 @@ async function getCards() {
 }
 
 //Gets the game running when the page is loaded
-getCards();
-
-setTimeout(defineCards,500)
-
+getCards().then(() => {
+  defineCards();
+});
 function defineCards(){
   playercardlist = `
 <article class="card">
@@ -148,7 +144,7 @@ async function sendData(decision) {
       }
 
       dealercardshere.innerHTML = dealerCardlist
-
+ 
       setTimeout(() => winCheck(state,playerValue,dealerValue,moneyWon), 3000)
 
     } catch (error) {
