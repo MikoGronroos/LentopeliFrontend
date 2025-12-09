@@ -22,4 +22,11 @@ async function getValue() {
   }
 }
 
-send.addEventListener('click', getValue)
+async function startSendingValues(){
+  getValue().then(()=>{
+    window.location.replace('blackJack.html');
+  });
+
+}
+
+send.addEventListener('click', startSendingValues)

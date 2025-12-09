@@ -143,9 +143,9 @@ async function sendData(decision) {
                  `
       }
 
-      dealercardshere.innerHTML = dealerCardlist
+      dealercardshere.innerHTML = dealerCardlist;
  
-      setTimeout(() => winCheck(state,playerValue,dealerValue,moneyWon), 3000)
+      winCheck(state,playerValue,dealerValue,moneyWon);
 
     } catch (error) {
       console.log('error', error);
@@ -181,7 +181,7 @@ async function sendData(decision) {
       howManyCards += 1
 
       cardshere.innerHTML = playercardlist
-      setTimeout(() => winCheck(state,playerValue,dealerValue,moneyWon),1500)
+      winCheck(state,playerValue,dealerValue,moneyWon);
 
     }
     catch (error) {

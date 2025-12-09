@@ -61,6 +61,7 @@ async function getAirports(){
 let airportCircles = [];
 
 getAirports().then(function(value) {
+  console.log(value);
   showAirports(value).then(function() {
     getCards().then(async function(values) {
       createPostcards(values).then(showMoney());
