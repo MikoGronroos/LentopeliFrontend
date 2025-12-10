@@ -169,7 +169,7 @@ async function showAirports(items) {
       if(items[value][1] === playerAirport[0]){
         return;
       }
-      currentCard = createCard(items[value][3], "100 coins", point, async function(){
+      currentCard = createCard(items[value][3], "30 coins", point, async function(){
         
         const obj = {icao: items[value][1]};
         const data = {
