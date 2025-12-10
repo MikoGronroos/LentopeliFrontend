@@ -63,7 +63,9 @@ body.loginbody {
     background-image: url('media/ttgbg.jpg');
 }
 
-
+body.endbody{
+  background-image: url('media/gameEndScreen.jpg');
+}
 .login-container {
     width: 200px;
 }

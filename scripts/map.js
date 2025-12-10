@@ -89,19 +89,23 @@ async function getAirports(){
     console.log('error', e);
   }}
 
+
 let airportCircles = [];
 
-getAirports().then(function(value) {
-  showAirports(value).then(function() {
-    getCards().then(async function(values) {
-      createPostcards(values).then(showMoney().then(()=>{
-        getLink().then((link)=>{
-          addCorrectGame(link);
-        });
-      }));
-    });
-  });
-});
+callAll();
+
+async function callAll(){
+let airports = await getAirports();
+
+await showAirports(airports);
+let cards = await getCards();
+await createPostcards(cards);
+  await showMoney();
+    let link = await getLink();
+  await addCorrectGame(link);
+  await hasMoney();
+
+}
 
 async function showMoney(){
   try {
@@ -118,7 +122,7 @@ async function showMoney(){
 }
 
 
-setInterval(showMoney, 3000);
+setInterval(showMoney, 2500);
 
 async function showAirports(items) {
   for (var i = airportCircles.length - 1; i >= 0; i--){
@@ -246,4 +250,19 @@ for(let i = 0; i < values.length; i++){
 
       document.getElementById("postcard-grid").appendChild(card);
   }  
+}
+
+async function hasMoney(){
+
+  try {
+    const response = await fetch('http://127.0.0.1:3000/hasMoney'); 
+    const values = await response.json();
+    const value = values['HasMoney'];
+    if(value === "noMoney"){ 
+      window.location.replace('endScreen.html');
+    }
+  } catch (e) {
+    console.log('error', e);
+  }
+  
 }
