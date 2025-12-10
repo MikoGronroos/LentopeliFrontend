@@ -33,15 +33,15 @@ async function getLink(){
     if(continent === "AF"){
       value = "games/blackJack/blackJack_gambleScreen.html";
     }else if(continent === "AS"){
-      value = "games/russianRoulette/russianRoulette_gambleScreen.html"
+      value = "games/blackJack/blackJack_gambleScreen.html"
     }else if(continent === "EU"){
       value = "games/pokerLite/pokerLite_gambleScreen.html"
     }else if(continent === "NA"){
-      value = "games/roulette/roulette_gambleScreen.html"
+      value = "games/pokerLite/pokerLite_gambleScreen.html"
     }else if(continent === "SA"){
-      value = "games/diceGame/diceGame_gambleScreen.html"
+      value = "games/blackJack/blackJack_gambleScreen.html"
     }else if(continent === "AF"){
-      value = "games/highCardLowCard/highCardLowCard_gambleScreen.html"
+      value = "games/pokerLite/pokerLite_gambleScreen.html"
     }
     return value;
   } catch (e) {

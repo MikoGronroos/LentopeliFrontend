@@ -1,18 +1,11 @@
 const storeItems = [
-    {id: 1, name: "Voucher", price: 100, type: "voucher"},
-    {id: 2, name: "Postcard from Africa", price: 200, type: "postcard", continent: "Africa"},
-    {id: 3, name: "Postcard from Asia", price: 200, type: "postcard", continent: "Asia"},
-    {id: 4, name: "Postcard from Australia", price: 200, type: "postcard", continent: "Australia"},
-    {id: 5, name: "Postcard from Europe", price: 200, type: "postcard", continent: "Europe"},
-    {id: 6, name: "Postcard from North America", price: 200, type: "postcard", continent: "North America"},
-    {id: 7, name: "Postcard from South America", price: 200, type: "postcard", continent: "South America"},
+    {id: 1, name: "Postcard from Africa", price: 200, type: "postcard", continent: "AF"},
+    {id: 2, name: "Postcard from Asia", price: 200, type: "postcard", continent: "AS"},
+    {id: 6, name: "Postcard from Australia", price: 200, type: "postcard", continent: "OC"},
+    {id: 3, name: "Postcard from Europe", price: 200, type: "postcard", continent: "EU"},
+    {id: 4, name: "Postcard from North America", price: 200, type: "postcard", continent: "NA"},
+    {id: 5, name: "Postcard from South America", price: 200, type: "postcard", continent: "SA"},
 ];
-
-let player = {
-    coins: 200,
-    inventory: []
-};
-
 
 async function buyItem(itemId) {
     const item = storeItems.find(i => i.id === itemId);
@@ -25,7 +18,7 @@ async function buyItem(itemId) {
     const body = {
         type: item.type,
         price: item.price,
-        continent: item.continent || null
+        continent: item.continent
     };
 
     try {
@@ -37,19 +30,6 @@ async function buyItem(itemId) {
 
         const data = await res.json();
         console.log("Server:", data.message);
-
-        if (data.success) {
-            player.coins -= item.price;
-            player.inventory.push(item.name);
-            console.log("Purchase successful!");
-            console.log("Coins:", player.coins);
-            console.log("Inventory:", player.inventory);
-        }
-
-        if (data.win) {
-            console.log("YOU WIN!:)");
-        }
-
     } catch (err) {
         console.log("Error connecting to server:", err);
     }
