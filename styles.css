@@ -23,7 +23,7 @@
   flex-direction: column;
   width: 15%;
   height: 10%;
-  background-color: blue;
+  background-color: #228B22;
 }
 
 #cityName{
@@ -68,7 +68,7 @@ body.endbody{
 }
 
 body.winbody{
-  background-image: url('media/winScreen.png'):
+  background-image: url('media/youwon.png');
 }
 .login-container {
     width: 200px;
