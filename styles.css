@@ -66,6 +66,10 @@ body.loginbody {
 body.endbody{
   background-image: url('media/gameEndScreen.png');
 }
+
+body.winbody{
+  background-image: url('media/winScreen.png'):
+}
 .login-container {
     width: 200px;
 }

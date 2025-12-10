@@ -29,6 +29,10 @@ async function buyItem(itemId) {
         });
 
         const data = await res.json();
+
+        if(data['win'] === true){
+          window.location.replace('winScreen.html');
+    }
         console.log("Server:", data.message);
     } catch (err) {
         console.log("Error connecting to server:", err);
